@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password checker</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <input id="choppingBlock" type="text">
+  <br>
+  <button onclick="receiveMessage()">Encrypt Text</button>
+  <br>
+  <input id="confirm" type="text">
+
+  <p class="noTextWarning errorText"></p>
+  <p class="tooShort errorText"></p>
+  <p class="noNumber errorText"></p>
+  <p class="noCapital errorText"></p>
+  <p class="noSymbol errorText"></p>
+  <p class="noConfirm errorText"></p>
+
+
+<script src="index.js"></script>
+</body>
+</html>
