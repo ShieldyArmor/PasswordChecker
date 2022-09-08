@@ -17,10 +17,6 @@ function containsNumber() {
     return /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(str);
   }
 
-  function getCharacterLength(str) {
-    return [...str].length;
-  }
-
 function receiveMessage() {
 var assignedVariable = document.getElementById("choppingBlock").value;
 var confirmVariable = document.getElementById("confirm").value;
@@ -33,7 +29,7 @@ else{
     emptyWarning.innerText = "";
   }
 
-  if (getCharacterLength(assignedVariable) <= 13){
+  if (assignedVariable.length <= 13){
     lengthWarning.innerText = "Your password must be at least 13 characters";
     console.error("input too short");
   }
