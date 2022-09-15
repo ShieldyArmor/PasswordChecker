@@ -14,59 +14,35 @@ function containsNumber() {
   }
 
   function containsSpecialChars(str) {
-    return /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(str);
+    return /\W|_/.test(str);
   }
+
+  function redirectCheck(str) {
+    if (passCheck.test(str) == true) {
+      window.location.assign("https://www.obama.org");
+    }
+  }
+
+  const passCheck = /^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[\W|_]).{13,}$/;
 
 function receiveMessage() {
 var assignedVariable = document.getElementById("choppingBlock").value;
 var confirmVariable = document.getElementById("confirm").value;
 
-if (assignedVariable == ""){
-    emptyWarning.innerText = "You need to write something!";
-    console.error("No encryption variable detected, program terminated.");
-  }
-else{
-    emptyWarning.innerText = "";
-  }
+  emptyWarning.innerText = (assignedVariable == "") ? "You need to write something!" : "";
 
-  if (assignedVariable.length <= 13){
-    lengthWarning.innerText = "Your password must be at least 13 characters";
-    console.error("input too short");
-  }
-else{
-    lengthWarning.innerText = "";
-  }
+  lengthWarning.innerText = (assignedVariable.length <= 13) ? "Your password must be at least 13 characters" : "";
 
-  if (hasNumber(assignedVariable) == false){
-    numberWarning.innerText = "Your password must include at least one number";
-    console.error("Unable to detect number");
-  }
-else{
-    numberWarning.innerText = "";
-}
+  numberWarning.innerText = (hasNumber(assignedVariable) == false) ? "Your password must include at least one number" : "";
 
-if (assignedVariable == assignedVariable.toLowerCase()){
-    capitalWarning.innerText = "Your password must include at least one capital letter";
-    console.error("Unable to detect capital letter");
-   }
-else{
-    capitalWarning.innerText = "";
-}
+  capitalWarning.innerText = (assignedVariable == assignedVariable.toLowerCase()) ? "Your password must include at least one capital letter" : "";
 
-if (containsSpecialChars(assignedVariable) == false){
-    symbolWarning.innerText = "Your password must include at least one symbol";
-    console.error("Unable to detect symbol");
-  }
-else{
-    symbolWarning.innerText = "";
-}
+  symbolWarning.innerText = (containsSpecialChars(assignedVariable) == false) ? "Your password must include at least one symbol" : "";
 
-if (assignedVariable != confirmVariable){
-    confirmWarning.innerText = "Your confirmation does not match!";
-    console.error("Could not match inputs");
+  confirmWarning.innerText = (assignedVariable != confirmVariable) ? "Your confirmation does not match!" : "";
+
+  if ((assignedVariable == confirmVariable)){
+    redirectCheck(assignedVariable)
   }
-else{
-    confirmWarning.innerText = "";
-}
 
 }
